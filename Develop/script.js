@@ -18,6 +18,7 @@ $(document).ready(function () {
     var scheduledTimeSlot = localStorage.getItem(i);
     $(`#${i}`).children("textarea").val(scheduledTimeSlot);
     changeColor(i); //call during the for loop so that it sets color/Storage at same time
+    console.log(i);
   }
 
   saveBtn.each(function () {
@@ -34,11 +35,10 @@ $(document).ready(function () {
 
   function changeColor(i) {
     if (currentTime < i) {
-      $(`#${i}`).removeClass("future");
-      $(`#${i}`).removeClass("present");
-      $(`#${i}`).addClass("past");
-    } else if (currentTime === i) {
       $(`#${i}`).removeClass("past");
+      $(`#${i}`).removeClass("present");
+      $(`#${i}`).addClass("future");
+    } else if (currentTime === i) {
       $(`#${i}`).addClass("present");
       $(`#${i}`).removeClass("future");
     } else {
